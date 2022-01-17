@@ -2,6 +2,10 @@
 
 ✍️ Today I Learned
 
+## JavaScript
+
+-   [화살표 함수(Arrow Function)](https://github.com/ppmyor/TIL/blob/main/JavaScript/arrowFunction.md)
+
 ## Ajax
 
 -   [Ajax 및 Fetch API의 기본 개념](https://github.com/ppmyor/TIL/blob/main/Ajax/Ajax-01.md)
