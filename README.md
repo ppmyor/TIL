@@ -16,3 +16,4 @@
 ## GraphQL
 
 -   [GraphQL로 해결할 수 있는 2가지 문제(Over-fetching, Under-fetching)](https://github.com/ppmyor/TIL/blob/main/GraphQL/GraphQL-01.md)
+-   [schema와 resolver](https://github.com/ppmyor/TIL/blob/main/GraphQL/GraphQL-02.md)
