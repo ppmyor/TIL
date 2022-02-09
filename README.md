@@ -11,6 +11,7 @@
 
 -   [JSX 개념 및 사용법](https://github.com/ppmyor/TIL/blob/main/ReactJS/JSX.md)
 -   [리렌더링 문제와 useState의 사용](https://github.com/ppmyor/TIL/blob/main/ReactJS/useState.md)
+-   [Props와 PropsType](https://github.com/ppmyor/TIL/blob/main/ReactJS/props.md)
 
 ## Ajax
 
