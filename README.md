@@ -30,3 +30,7 @@
 -   [schema와 resolver](https://github.com/ppmyor/TIL/blob/main/GraphQL/schema-resolver.md)
 -   [playground](https://github.com/ppmyor/TIL/blob/main/GraphQL/playground.md)
 -   [Query와 Mutation](https://github.com/ppmyor/TIL/blob/main/GraphQL/query-mutation.md)
+
+## git
+
+-   [gh-pages를 이용한 자동 배포](https://github.com/ppmyor/TIL/blob/main/git/gh-pages.md)
