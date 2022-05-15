@@ -51,3 +51,22 @@ b.b[1] = 20;
 console.log(a.b); //[1, 2, 3]
 console.log(b.b); //[1, 20, 3]
 ```
+
+### 깊은 복사(deep copy)를 하는 방법
+
+1. Object.assign() 메소드를 활용
+   - 2차원 객체는 깊은 복사는 이루어지지 않는다는 단점
+2. 전개 연산자(Spread Operator)를 황용
+   - 2차원 객체는 깊은 복사는 이루어지지 않는다는 단점
+3. JSON 객체 메소드를 이용
+   - JSON 객체의 stringify(), parse() 메소드를 사용
+   - JSON.stringify 메소드가 function을 undefined로 처리하는 문제
+4. 재귀 함수를 사용
+   - 참조형 데이터가 있는 것들을 찾아가면서 깊은 복사를 진행
+5. lodash 모듈의 cloneDeep() 메소드를 활용
+   - 가장 손쉽게 깊은 복사를 해결하는 방법
+
+### 참고
+
+- [[Java Script] 얕은 복사와 깊은 복사](https://velog.io/@nomadhash/Java-Script-깊은-복사와-얕은-복사-1dus9z79)
+- [[JavaScript] 깊은복사(Deep Copy)와 얕은복사(Shallow Copy)](https://jess2.xyz/JavaScript/copy/)
