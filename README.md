@@ -2,6 +2,11 @@
 
 ✍️ Today I Learned
 
+## Algorithm
+
+- [기본 정렬 알고리즘(selection, bubble, insertion)](https://github.com/ppmyor/TIL/blob/main/Algorithm/basic-sort-algorithm.md)
+-
+
 ## JavaScript
 
 - [화살표 함수(Arrow Function)](https://github.com/ppmyor/TIL/blob/main/JavaScript/arrowFunction.md)
