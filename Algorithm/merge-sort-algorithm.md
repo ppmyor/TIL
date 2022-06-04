@@ -81,6 +81,7 @@ void merge(int data[], int p, int q, int r) {
 - otherwise
   - T(n) = T(n/2) + T(n/2) + n // n이 홀수일 경우 내림이나 올림의 과정 필요
   - T(n) = 2T(n/2) + n
+  - <img width="567" alt="스크린샷 2022-06-04 오후 1 50 15" src="https://user-images.githubusercontent.com/52994378/171983847-d4c1b3c3-804a-4262-991f-afd1ff12335b.png">
   - T(n) = O(nlogn)
 - 일반적으로 분할정복법을 따르는 알고리즘의 시간복잡도는 for문의 반복횟수를 따지면서 시간복잡도 분석을 하지 않고, 시간복잡도에 관한 순환식을 세운 후 순환식을 수학적으로 풀어서 계산
 
