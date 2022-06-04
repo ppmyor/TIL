@@ -6,6 +6,7 @@
 
 - [기본 정렬 알고리즘(selection, bubble, insertion)](https://github.com/ppmyor/TIL/blob/main/Algorithm/basic-sort-algorithm.md)
 - [에라토스테네스의 체](https://github.com/ppmyor/TIL/blob/main/Algorithm/sieve_of_Eratosthenes.md)
+- [합병 정렬(merge sort)](https://github.com/ppmyor/TIL/blob/main/Algorithm/merge-sort-algorithm.md)
 
 ## JavaScript
 
