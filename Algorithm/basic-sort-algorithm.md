@@ -82,6 +82,29 @@ bubbleSort(A[], n)  // 배열 A[1...n]을 정렬한다.
 - 시간 복잡도: T(n) = (n-1) + (n-2) + ... + 2 + 1 = n(n-1)/2 = O(n\*\*2)
 - 시간 복잡도는 최악, 최선, 평균의 경우 모두 동일
 
+#### js 구현
+
+```js
+function selectionSort(array) {
+  for (let i = 0; i < array.length; i++) {
+    let minIndex = i;
+    for (let j = i + 1; j < array.length; j++) {
+      if (array[minIndex] > array[j]) {
+        minIndex = j;
+      }
+    }
+    if (minIndex !== i) {
+      let swap = array[minIndex];
+      array[minIndex] = array[i];
+      array[i] = swap;
+    }
+    console.log(`${i}회전: ${array}`);
+  }
+  return array;
+}
+console.log(selectionSort([5, 4, 3, 2, 1]));
+```
+
 ### 삽입정렬(Insertion Sort)
 
 #### 원리
@@ -128,3 +151,4 @@ insertionSort(A[], n)   //배열 A[1...n]을 정렬한다.
 ### 참고
 
 - [영리한 프로그래밍을 위한 알고리즘 강좌](https://www.inflearn.com/course/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%95%EC%A2%8C)
+- [JS/Sorting 버블 정렬, 삽입 정렬, 선택 정렬 자바스크립트로 구현하기 (Bubble Sort, Insertion Sort, Selection Sort in JavaScript)](https://im-developer.tistory.com/133)
