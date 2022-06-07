@@ -36,6 +36,29 @@ selection(A[], n) // 배열 A[1...n]을 정렬한다
 - 시간 복잡도: T(n) = (n-1) + (n-2) + ... + 2 + 1 = n(n-1)/2 = O(n\*\*2)
 - 시간 복잡도는 최악, 최선, 평균의 경우 모두 동일
 
+#### js 구현
+
+```js
+function selectionSort(array) {
+  for (let i = 0; i < array.length; i++) {
+    let minIndex = i;
+    for (let j = i + 1; j < array.length; j++) {
+      if (array[minIndex] > array[j]) {
+        minIndex = j;
+      }
+    }
+    if (minIndex !== i) {
+      let swap = array[minIndex];
+      array[minIndex] = array[i];
+      array[i] = swap;
+    }
+    console.log(`${i}회전: ${array}`);
+  }
+  return array;
+}
+console.log(selectionSort([5, 4, 3, 2, 1]));
+```
+
 ### Bubble Sort
 
 #### 원리
@@ -85,24 +108,24 @@ bubbleSort(A[], n)  // 배열 A[1...n]을 정렬한다.
 #### js 구현
 
 ```js
-function selectionSort(array) {
+function bubbleSort(array) {
   for (let i = 0; i < array.length; i++) {
-    let minIndex = i;
-    for (let j = i + 1; j < array.length; j++) {
-      if (array[minIndex] > array[j]) {
-        minIndex = j;
+    let swap;
+    for (let j = 0; j < array.length - 1 - i; j++) {
+      if (array[j] > array[j + 1]) {
+        swap = array[j];
+        array[j] = array[j + 1];
+        array[j + 1] = swap;
       }
     }
-    if (minIndex !== i) {
-      let swap = array[minIndex];
-      array[minIndex] = array[i];
-      array[i] = swap;
-    }
     console.log(`${i}회전: ${array}`);
+    if (!swap) {
+      break;
+    }
   }
   return array;
 }
-console.log(selectionSort([5, 4, 3, 2, 1]));
+console.log(bubbleSort([5, 4, 3, 2, 1]));
 ```
 
 ### 삽입정렬(Insertion Sort)
@@ -147,6 +170,25 @@ insertionSort(A[], n)   //배열 A[1...n]을 정렬한다.
 - 최악의 경우 시간 복잡도: T(n) = (n-1) + (n-2) + ... + 2 + 1 = n(n-1)/2 = O(n\*\*2)
 - 최선의 경우(모두 정렬되어있는 경우) : n - 1
 - 평균으로는 대략 최선의 경우와 최악의 경우의 절반 정도
+
+#### js 구현
+
+```js
+function insertionSort(array) {
+  for (let i = 1; i < array.length; i++) {
+    let cur = array[i];
+    let left = i - 1;
+    while (left >= 0 && array[left] > cur) {
+      array[left + 1] = array[left];
+      left--;
+    }
+    array[left + 1] = cur;
+    console.log(`${i}회전: ${array}`);
+  }
+  return array;
+}
+console.log(insertionSort([5, 4, 3, 2, 1]));
+```
 
 ### 참고
 
