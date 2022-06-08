@@ -87,3 +87,7 @@ MAX-HEAPIFY(A, i)
 - 트리의 높이를 h라고 한다면 max-heapify 연산의 시간복잡도는 O(h)
   - complete binary tree에서 노드 수를 n이라고 한다면 h=logn
   - 따라서 시간복잡도는 O(logn)
+
+### 참고
+
+- [영리한 프로그래밍을 위한 알고리즘 강좌](https://www.inflearn.com/course/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%95%EC%A2%8C)
