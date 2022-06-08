@@ -8,6 +8,7 @@
 - [에라토스테네스의 체](https://github.com/ppmyor/TIL/blob/main/Algorithm/sieve_of_Eratosthenes.md)
 - [합병 정렬(merge sort)](https://github.com/ppmyor/TIL/blob/main/Algorithm/merge-sort-algorithm.md)
 - [빠른 정렬(quick sort)](https://github.com/ppmyor/TIL/blob/main/Algorithm/quick-sort-algorithm.md)
+- [힙 정렬(heap sort)](https://github.com/ppmyor/TIL/blob/main/Algorithm/heap-sort-algorithm.md)
 
 ## JavaScript
 
