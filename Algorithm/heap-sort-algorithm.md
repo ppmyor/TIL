@@ -31,6 +31,29 @@
 - A[i]의 왼쪽 자식 = A[2i]
 - A[i]의 오른쪽 자식 = A[2i+1]
 
+#### 동작 과정
+
+<img width="586" alt="스크린샷 2022-06-13 오후 6 59 46" src="https://user-images.githubusercontent.com/52994378/173329662-e8d6a1c0-144c-4d67-ad0a-859b7d9ec256.png">
+
+1. 주어진 데이터로 힙을 만든다.
+2. 힙에서 최대값(루트)을 가장 마지막 값과 바꾼다.
+3. 힙의 크기가 1 줄어든 것으로 간주한다. (가장 큰 값이 배열의 가장 마지막으로 잘 갔기 때문에 없는 것으로 간주하고 연산) 즉, 가장 마지막 값은 힙의 일부가 아닌 것으로 간주한다.
+4. 루트 노드에 대해서 HEAPIFY(1)한다. (맨 마지막 값과 exchange 했기 때문에 루트 노드만 heap프로퍼티를 만족하지 않기 때문에 max-heapify 연산)
+5. 2~4번을 반복한다.
+
+- 시간 복잡도: O(nlogn)
+
+#### psudo code
+
+```java
+HEAPSORT(A)
+  BUILD-MAX-HEAP(A) -> O(n)
+  for i <- heap-size down 2 do -> n-1 times //i: 현재 마지막 노드  heap_size: n
+    exchange A[1] <-> A[i] -> O(1) //A[1]: root A[i]: 맨 마지막 노드 exchange
+    heap_size <- heap_size - 1 -> O(1) // heap_size -1 : 맨 마지막 노드는 힙의 일부가 아님
+    MAX-HEAPFIY(A, 1) -> O(log2n) // root 노드에 대해서 MAX-HEAPFIY 연산
+```
+
 #### 기본 연산: MAX-HEAPIFY
 
 - 전체를 힙으로 만들어라
@@ -87,6 +110,28 @@ MAX-HEAPIFY(A, i)
 - 트리의 높이를 h라고 한다면 max-heapify 연산의 시간복잡도는 O(h)
   - complete binary tree에서 노드 수를 n이라고 한다면 h=logn
   - 따라서 시간복잡도는 O(logn)
+
+#### 정렬 할 배열을 힙으로 만들기
+
+1. 1차원 배열을 Complete Binary Tree로 생각(heap은 아님)
+2. 노드들을 level의 역순으로 처리
+   - 한 레벨 안에서는 오른쪽에서 왼쪽으로
+   - 처음으로 leaf노드가 아닌 노드에서부터 시작
+3. 해당 노드를 루트로 하는 서브트리에 대해서 작업
+   - 왼쪽 노드와 오른쪽 노드를 각각 따로 본다면 싱글노드인 heap이기 때문에 heap 조건 충족
+   - 서브트리에 대해서 heapify 연산을 통해 heap으로 만듦
+4. 반복
+
+##### psudo code
+
+```java
+BUILD-MAX-HEAP(A) //A: 정렬할 데이터의 개수
+heap-size[A] <- length[A]
+for i <- floor length[A]/2 down to 1 //부모 노드는 1/2
+  do MAX-HEAPIFY(A,i)
+```
+
+시간복잡도: O(n)
 
 ### 참고
 
