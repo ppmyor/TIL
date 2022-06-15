@@ -85,6 +85,36 @@ void merge(int data[], int p, int q, int r) {
   - T(n) = O(nlogn)
 - 일반적으로 분할정복법을 따르는 알고리즘의 시간복잡도는 for문의 반복횟수를 따지면서 시간복잡도 분석을 하지 않고, 시간복잡도에 관한 순환식을 세운 후 순환식을 수학적으로 풀어서 계산
 
+#### js 구현
+
+```js
+function mergeSort(array) {
+  if (array.length < 2) {
+    return array;
+  }
+  const mid = Math.floor(array.length / 2);
+  const left = array.slice(0, mid);
+  const right = array.slice(mid);
+  return merge(mergeSort(left), mergeSort(right));
+  function merge(left, right) {
+    const resultArray = [];
+    let leftIndex = 0;
+    let rightIndex = 0;
+    while (leftIndex < left.length && rightIndex < right.length) {
+      if (left[leftIndex] < right[rightIndex]) {
+        resultArray.push(left[leftIndex]);
+        leftIndex++;
+      } else {
+        resultArray.push(right[rightIndex]);
+        rightIndex++;
+      }
+    }
+    return resultArray.concat(left.slice(leftIndex), right.slice(rightIndex));
+  }
+}
+```
+
 ### 참고
 
 - [영리한 프로그래밍을 위한 알고리즘 강좌](https://www.inflearn.com/course/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%95%EC%A2%8C)
+- [JS/Sorting 병합 정렬(Merge Sort)과 분할 정복 전략(Divide and Conquer) 개념에 대하여](https://im-developer.tistory.com/134)
