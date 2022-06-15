@@ -11,6 +11,7 @@
 - [힙 정렬(heap sort)](https://github.com/ppmyor/TIL/blob/main/Algorithm/heap-sort-algorithm.md)
 - [힙(heap)의 다른 응용: 우선순위 큐(priority queue)](https://github.com/ppmyor/TIL/blob/main/Algorithm/priority-queue.md)
 - [정렬의 lower bound](https://github.com/ppmyor/TIL/blob/main/Algorithm/sort-lower-bound.md)
+- [선형시간 정렬 알고리즘 - counting sort](https://github.com/ppmyor/TIL/blob/main/Algorithm/sorting-in-linear-time-counting.md)
 
 ## JavaScript
 
