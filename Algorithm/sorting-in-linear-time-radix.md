@@ -28,3 +28,7 @@ RADIX-SORT(A, d) // A: n개의 데이터가 저장된 배열, d: d자리 정수
 ## 정렬 알고리즘들
 
 <img width="579" alt="스크린샷 2022-06-16 오후 2 26 40" src="https://user-images.githubusercontent.com/52994378/173997847-24b48a62-8039-4bfb-9463-37cf437053b1.png">
+
+### 참고
+
+- [영리한 프로그래밍을 위한 알고리즘 강좌](https://www.inflearn.com/course/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%95%EC%A2%8C)

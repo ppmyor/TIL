@@ -55,3 +55,7 @@ COUNTING-SORT(A, B, k)
 - Stable 정렬 알고리즘
   - "입력에 동일한 값이 있을 때 입력에 먼저 나오는 값이 출력에서도 먼저 나온다"
   - **Counting 정렬은 stable하다**
+
+### 참고
+
+- [영리한 프로그래밍을 위한 알고리즘 강좌](https://www.inflearn.com/course/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%95%EC%A2%8C)

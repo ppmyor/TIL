@@ -51,3 +51,7 @@
   - full binary tree, Complete binary tree 일 때 전체 노드 개수 n개를 유지하면서 높이가 가장 낮출 수 있는 방법 -> 높이 log2n
   - 전체 노드의 개수가 n!보다 많다면 높이는 log2n!보다 낮을 수 없음
   - 따라서 O(nlog2n)
+
+### 참고
+
+- [영리한 프로그래밍을 위한 알고리즘 강좌](https://www.inflearn.com/course/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%95%EC%A2%8C)
