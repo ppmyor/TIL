@@ -4,8 +4,10 @@
 
 ## Algorithm
 
-- [기본 정렬 알고리즘(selection, bubble, insertion)](https://github.com/ppmyor/TIL/blob/main/Algorithm/basic-sort-algorithm.md)
+### 정렬
+
 - [에라토스테네스의 체](https://github.com/ppmyor/TIL/blob/main/Algorithm/sieve_of_Eratosthenes.md)
+- [기본 정렬 알고리즘(selection, bubble, insertion)](https://github.com/ppmyor/TIL/blob/main/Algorithm/basic-sort-algorithm.md)
 - [합병 정렬(merge sort)](https://github.com/ppmyor/TIL/blob/main/Algorithm/merge-sort-algorithm.md)
 - [빠른 정렬(quick sort)](https://github.com/ppmyor/TIL/blob/main/Algorithm/quick-sort-algorithm.md)
 - [힙 정렬(heap sort)](https://github.com/ppmyor/TIL/blob/main/Algorithm/heap-sort-algorithm.md)
@@ -13,6 +15,10 @@
 - [정렬의 lower bound](https://github.com/ppmyor/TIL/blob/main/Algorithm/sort-lower-bound.md)
 - [선형시간 정렬 알고리즘 - counting sort](https://github.com/ppmyor/TIL/blob/main/Algorithm/sorting-in-linear-time-counting.md)
 - [선형시간 정렬 알고리즘 - radix sort](https://github.com/ppmyor/TIL/blob/main/Algorithm/sorting-in-linear-time-radix.md)
+
+### 검색트리
+
+- [트리와 이진트리](https://github.com/ppmyor/TIL/blob/main/Algorithm/tree-and-binary-tree.md)
 
 ## JavaScript
 
