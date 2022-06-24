@@ -19,6 +19,7 @@
 ### 검색트리
 
 - [트리와 이진트리](https://github.com/ppmyor/TIL/blob/main/Algorithm/tree-and-binary-tree.md)
+- [이진검색트리(Binary Search Tree)](https://github.com/ppmyor/TIL/blob/main/Algorithm/binary-search-tree.md)
 
 ## JavaScript
 
