@@ -89,6 +89,102 @@ ITERATIVE-TREE-SEARCH(x, k)  // x: 트리의 노드(처음 호출 시 x는 root 
 
 - 시간복잡도: O(h), h는 높이
 
+#### INSERT
+
+- 새로운 노드를 이진검색트리에 추가
+
+![스크린샷 2022-06-28 오후 11 04 02](https://user-images.githubusercontent.com/52994378/176199007-828f3381-6133-4b45-bd96-c197c13b4682.png)
+
+- 새로운 데이터를 추가할 때 기존의 노드들은 전혀 변경하지 않으며, 새로운 노드를 기존의 노드의 적절한 leaf 자리에 넣음
+
+##### psudo code
+
+```java
+TREE-INSERT(T, z) //T: Tree, z: insert 할 노드
+  y <- NIL //y는 x의 한칸 뒤를 따라와야하므로 null
+  x <- root[T]
+  while x != NIL
+    do y <- x
+      if key[z] < key[x] // 추가하려는 key와 해당 노드 key 값을 비교
+        then x <- left[x]
+        else x <- right[x]
+  p[z] <- y //x가 null이 되는 순간 y가 가리키고 있는 노드의 자식으로 새로운 노드를 insert
+  if y == NIL //x가 한칸도 내려가지 않은 경우(while문을 실행하지 않은 경우) -> 원래 tree가 empty tree인 경우
+    then root[T] <- z
+    else if key[z] < key[y] // x가 null이기 때문에 x가 왼쪽으로 따라 내려갔는지 오른쪽으로 내려갔는지 판별 불가 -> 따라서, 왼쪽 자식인지 오른쪽 자식인지 판별하기 위해 한번 더 비교
+          then left[y] <- z
+          else right[y] <- z
+```
+
+- 시간복잡도: O(h)
+
+#### 최소값
+
+- 어떤 노드가 최소값이 되기 위해서는 왼쪽 자식이 없어야 함
+- 누군가의 오른쪽 서브트리에 속해있어서는 안됨
+- 최소값은 항상 가장 왼쪽 노드에 존재
+
+##### psudo code
+
+```java
+TREE-MINIMUM(x)
+  while left[x] != NIL
+    do x <- left[x]
+  return x
+```
+
+- 시간복잡도: O(h)
+
+#### 최대값
+
+- 최대값은 항상 가장 오른쪽 노드에 존재
+
+##### psudo code
+
+```java
+TREE-MAXIMUM(x)
+  while right[x] != NIL
+    do x <- right[x]
+  return x
+```
+
+- 시간복잡도: O(h)
+
+#### Successor
+
+- 이진검색트리에서의 Successor는 노드에 저장된 데이터를 크기순으로 나열했을 때, 내 바로 다음에 올 값
+  - 나보다 크면서 가장 작은 값
+- 노드 x의 successor란 key[x]보다 크면서 가장 작은 키를 가진 노드
+- 모든 키들이 서로 다르다고 가정
+
+- 3가지 경우
+  - 노드 x의 오른쪽 부트리가 존재할 경우, 오른쪽 부트리의 최소값
+  - 오른쪽 부트리가 없는 경우, 어떤 노드 y의 왼쪽 부트리의 최대값이 x가 되는 그런 노드 y가 x의 successor
+    - 부모를 따라 루트까지 올라가면서 처음으로 누군가의 왼쪽 자식이 되는 노드
+  - 그런 노드 y가 존재하지 않을 경우 successor가 존재하지 않음(즉, x가 최대값)
+
+##### psudo code
+
+```java
+TREE-SUCCESSOR(x)
+  if right[x] != NIL // node x의 오른쪽 자식이 존재한다면 오른쪽 자식을 root로 하는 서브트리에서 최소값을 찾음
+    then return TREE-MINIMUM(right[x])
+  y <- p[x] // p[x]: x의 부모노드,  y를 부모노드로 함
+  while y != NIL and x = right[y] // x가 부모 y의 오른쪽 자식인 동안, y가 null이면 x가 root
+    do x <- y
+       y <- p[y]
+  return y
+```
+
+- 시간복잡도: O(h)
+
+#### Predecessor
+
+- 나보다 작으면서 가장 큰 값
+- 노드 x의 predecessor란 key[x]보다 작으면서 가장 큰 키를 가진 노드
+- Successor와 반대
+- 시간복잡도: O(h)
+
 ### 참고
 
 - [영리한 프로그래밍을 위한 알고리즘 강좌](https://www.inflearn.com/course/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%95%EC%A2%8C)
