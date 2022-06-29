@@ -22,7 +22,7 @@
 
 - 정렬된 혹은 정렬되지 않은 배열 혹은 연결 리스트를 사용할 경우
   - INSERT, SEARCH, DELETE 중 적어도 하나는 O(n)
-- 이진탐색트리(Binary Search Tree, 레드-블랙 트리, AVL-트리등의 트리에 기반한 구조들
+- 이진검색트리(Binary Search Tree, 레드-블랙 트리, AVL-트리등의 트리에 기반한 구조들
 - Direct Address Table, 해쉬 테이블 등
 
 ### 검색트리
@@ -118,6 +118,57 @@ TREE-INSERT(T, z) //T: Tree, z: insert 할 노드
 
 - 시간복잡도: O(h)
 
+#### DELETE
+
+- 어떤 특정한 node를 이진검색트리에서 삭제
+  - 삭제하고자 하는 key를 포함한 노드를 찾아야함(key를 가지고 있는 노드를 삭제)
+  - 따라서 사전 작업으로 search를 포함하고 있음
+
+![스크린샷 2022-06-30 오전 2 35 54](https://user-images.githubusercontent.com/52994378/176500604-4cda6997-0124-4055-977b-a1fdc5bbd89d.png)
+
+- Case 1: 자식노드가 없는 경우 -> 그냥 삭제
+
+![스크린샷 2022-06-30 오전 2 57 57](https://user-images.githubusercontent.com/52994378/176504328-dc25dd10-d967-4c6d-8e77-8d0f6d4ed406.png)
+
+- Case 2: 자식노드가 1개인 경우
+  - 연결리스트에서 가운데 노드만 삭제 하는 개념
+  - 해당 노드의 부모와 해당 노드의 자식을 연결시키면 됨
+  - 자식 노드를 본래 내가 있던 위치로 끌어올리는 개념
+
+![스크린샷 2022-06-30 오전 3 01 13](https://user-images.githubusercontent.com/52994378/176504927-a4507cd1-afbf-4eab-99c0-2fcce10cae91.png)
+![스크린샷 2022-06-30 오전 3 17 54](https://user-images.githubusercontent.com/52994378/176507729-34c09e3e-240c-4feb-9c8f-0ef1c3d059c2.png)
+
+- Case 3: 자식노드가 2개인 경우
+  - 노드를 그대로 둔채 노드 안에 데이터만 삭제
+  - 다른 노드에 저장된 데이터를 옮겨옴
+  - 왼쪽 서브트리가 본인보다 작고 오른쪽 서브트리가 본인보다 커야하는 이진트리의 조건을 만족해야하므로, 삭제하려는 노드의 successor 혹은 predecessor
+  - 삭제하려는 노드의 successor는 최대 1개의 자식노드를 가지며, 왼쪽노드가 없음
+  - successor노드의 값을 삭제하려는 노드로 옮기고 Case1이나 Case2의 방식으로 successor노드를 삭제
+
+##### psudo code
+
+```java
+TREE-DELETE(T, z)//T: tree, z: 삭제 할 노드
+  if left[z] == NIL or right[z] == NIL  // 자식노드가 최대 1개
+    then y <- z
+    else y <- TREE-SUCCESSOR(z) // successor를 찾음, 변수 y는 실제로 삭제 할 노드
+  if left[y] != NIL // 왼쪽 자식만 존재하고, 오른쪽 자식은 존재x
+    then x <- left[y]
+    else x <- right[y]
+  if x != NIL // y를 삭제하고 x가 y자리로 올라가면 됨
+    then p[x] <- p[y] // y의 부모가 x의 부모가 됨
+  if p[y] == NIL // y가 root라면
+    then root[T] <- x
+    else if y == left[p[y]] // y의 부모가 있다면
+        then left[p[y]] <- x // x가 부모의 왼쪽 자식
+        else right [p[y]] <- x // x가 부모의 오른쪽 자식
+  if y != z // Case 3, y가 노드의 successor인 경우
+    then key[z] <- key[y] // node y에 저장된 데이터를 node z로 copy
+    return y
+```
+
+- 시간복잡도: O(h)
+
 #### 최소값
 
 - 어떤 노드가 최소값이 되기 위해서는 왼쪽 자식이 없어야 함
@@ -184,6 +235,14 @@ TREE-SUCCESSOR(x)
 - 노드 x의 predecessor란 key[x]보다 작으면서 가장 큰 키를 가진 노드
 - Successor와 반대
 - 시간복잡도: O(h)
+
+### BST 정리
+
+- 각종 연산의 시간복잡도 O(h)
+- 그러나, 최악의 경우 트리의 높이 h=O(n)
+- 균형잡힌(balanced) 트리
+  - 레드-블랙 트리 등
+  - 키의 삽입이나 삭제 시 추가로 트리의 균형을 잡아줌으로써 높이를 O(log2n)으로 유지
 
 ### 참고
 
