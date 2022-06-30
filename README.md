@@ -20,6 +20,7 @@
 
 - [트리와 이진트리](https://github.com/ppmyor/TIL/blob/main/Algorithm/tree-and-binary-tree.md)
 - [이진검색트리(Binary Search Tree)](https://github.com/ppmyor/TIL/blob/main/Algorithm/binary-search-tree.md)
+- [레드블랙트리(Red Black Tree)](https://github.com/ppmyor/TIL/blob/main/Algorithm/red-black-tree.md)
 
 ## JavaScript
 
