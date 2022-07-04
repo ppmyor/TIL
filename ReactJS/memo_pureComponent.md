@@ -42,3 +42,16 @@ MemorizedBtn.displayName = "MemorizedBtn";
 ```
 -   memo를 사용한 경우 개발자도구에서 Component의 이름이 이상하게 변경되는데 이름을 지정해줘서 원상태로 되돌려줌
 
+### shouldComponentUpdate
+```js
+sholdComponentUpdate(nextProps, nextState, nextContext) {
+    if(this.state.counter !== this.nextState.counter) {
+        return true;
+    }
+    return false;
+}
+```
+- 어떤 경우에 랜더링이 될지를 직접 명시해줄 수 있음
+
+### 참고
+- [sholdComponentUpdate](https://ko.reactjs.org/docs/react-component.html#shouldcomponentupdate)
