@@ -83,7 +83,7 @@ module.exports = {
     app: ["./client"],
   },
 
-  module: [
+  module: {
       rules: [{
           test: /\.jsx?/,
           loader: 'babel-loader',
@@ -91,7 +91,7 @@ module.exports = {
               presets: ['@babel/preset-env', '@babel/preset-react'],
           }
       }]
-  ],
+  },
 
   output: {
     path: path.join(__dirname, "dist"),
