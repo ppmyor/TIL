@@ -74,6 +74,120 @@ LEFT-ROTATE(T, x) // T:레드블랙트리 x: left rorate를 실행 할 노드
 
 - 시간복잡도: O(1)
 
+#### Insert
+
+- 보통의 BST에서처럼 노드를 INSERT한다.
+- 새로운 노드 z를 red노드로 한다.
+- RB-INSERT-FIXUP을 호출한다.
+
+- psudo code
+
+```java
+RB-INSERT(T, z) //T: 레드블랙트리 z: insert 할 노드
+  y <- nil[T]
+  x <- root[T]
+  while x != nil[T]
+    do y <- x
+      if key[z] < key[x]
+        then x <- left[x]
+        else x <- right[x]
+  p[z] <- y
+  if y == nil[T] // y가 null인 것은 empty tree
+    then root[T] <- z // 새로운 노드가 root
+    else if key[z] < key[y]
+      then left[y] <- z
+      else right[y] <- z
+  left[z] <- nil[T]
+  right[z] <- nil[T]
+  color[z] <- RED // 새로 insert한 노드의 색은 red
+  RB-INSERT-FIXUP(T, z) // z: insert한 새로운 노드, 레드 블랙 트리의 규칙을 위반 할 가능성이 다분하므로 다시 fix
+```
+
+##### RB-INSERT-FIXUP
+
+- 위반될 가능성이 있는 조건들
+
+1. 모든 노드는 red와 black 이어야 한다. -> OK.
+2. 루트노드는 black 이어야 한다. -> 만약 z가 루트노드라면 위반, 아니라면 OK.
+3. 모든 nil 노드는 black 이어야 한다.-> OK.
+4. red가 연속해서는 안된다. -> z의 부모 p[z]가 red이면 위반.
+5. 어떤 노드에서 출발하더라도 nil까지 이르는 동안 만나는 black 노드의 개수는 동일해야한다. -> OK.
+
+- r-r 위반은 루프를 돌면서, r-r위반을 트리의 위쪽으로 올림.
+- Loop Invariant:
+
+  - z는 red노드
+  - 오직 하나의 위반만이 존재한다:
+    - 조건 2: z가 루트노드이면서 red 이거나, 또는
+    - 조건 4: z와 그 부모 p[z]가 둘 다 red이거나
+  - 종료조건:
+    - 부모노드 p[z]가 black이 되면 종료한다. 조건 2가 위반일 경우 z를 black으로 바꿔주고 종료한다.
+
+- 경우 1: z의 삼촌이 red
+  <img width="536" alt="스크린샷 2022-07-06 오후 12 36 44" src="https://user-images.githubusercontent.com/52994378/177462887-3ac1c476-6523-4f64-ada5-2e69cc78741c.png">
+
+  - 부모가 red인 경우에는 할아버지 노드가 반드시 존재(루트노드는 무조건 black)
+
+  1. 부모가 할아버지 노드의 왼쪽 자식이면서
+  2. 본인, 부모 노드, 삼촌 노드: red, 할아버지 노드: black
+
+  - 부모 노드, 삼촌 노드의 색과 할아버지 노드의 색을 switch
+  - 즉, 부모와 삼촌 노드의 색을 black으로 바꾸어주고 할아버지 노드를 red로 바꿈.
+  - r-r 위반이 두레벨 위로 올라감.
+
+- 경우 2와 3: z의 삼촌이 black
+  <img width="556" alt="스크린샷 2022-07-06 오후 12 37 02" src="https://user-images.githubusercontent.com/52994378/177462916-2e72c260-14db-452c-8e94-dc0a28dc0a53.png">
+
+  - 삼촌의 노드는 black이므로 nil노드 일 가능성도 있음
+
+  1. 부모가 할아버지 노드의 왼쪽 자식이면서
+  2. z의 삼촌이 black
+
+  - 경우 2: z가 오른쪽 자식인 경우
+    - p[z]에 대해서 left-rotation한 후 원래 p[z]를 z로 하고 경우 3으로 넘김
+  - 경우 3: z가 왼쪽 자식인 경우
+    - p[z]를 black, p[p[z]]를 red로 바꿈
+    - p[p[z]]에 대해서 right-rotation
+    - 부모였던 노드가 새로 z가 됨.
+    - 할아버지를 중심으로 right-rotation을 하면, z의 부모가 위로 올라가고 할아버지가 부모의 오른쪽 자식으로 내려감.
+    - 부모와 할아버지 노드의 색을 exchange
+
+- 경우 1, 2, 3은 p[z]가 p[p[z]]의 왼쪽 자식인 경우들
+- 경우 4, 5, 6은 p[z]가 p[p[z]]의 오른쪽 자식인 경우들
+
+  - 경우 1, 2, 3과 대칭적이므로 생략
+
+- psudo code
+
+```java
+RB-INSERT-FIXUP(T, z) // z: red
+  while color[p[z]] == RED //z의 부모가 red인 동안(r-r 충돌인 경우)
+    do if p[z] == left[p[p[z]]] // z의 부모가 할아버지 노드의 왼쪽자식인 동안
+      then y <- right[p[p[z]]]
+        if color[y] == RED //  부모와 삼촌이 red, 할아버지는 black
+          then color[p[z]] <- BLACK //Case 1
+                color[y] <- BLACK //Case 1
+                color[p[p[z]]] <- RED //Case 1
+                z <- p[p[z]] //Case 1 -> 할아버지를 새로운 문제 노드로 변경
+          else if z == right[p[z]]
+                then z <- p[z] //Case 2
+                      LEFT-ROTATE(T,z) //Case 2
+                color[p[z]] <- BLACK //Case 3
+                color[p[p[z]]] <- RED //Case 3
+                RIGHT-ROTATE(T, p[p[z]]) //Case 3
+      else (same as then clause whit "right" and "left" exchanged) // Case 4, 5, 6
+  color[root[T]] <- BLACK // Case 1이나 Case 4 인 경우로 빠져나온다면 루트가 red이므로 BLACK으로 바꾸어주는 코드 추가
+```
+
+<img width="410" alt="스크린샷 2022-07-06 오후 1 19 03" src="https://user-images.githubusercontent.com/52994378/177467406-e0c0783c-3a82-49ba-b7c8-d96bb7d49110.png">
+
+- BST에서의 INSERT: O(log2n)
+- RB-INSERT-FIXUP
+  - 경우 1에 해당 할 경우 z가 2레벨 상승
+  - 경우 2에 해당 할 경우 O(1)
+  - 따라서 트리의 높이에 비례하는 시간
+- 즉, INSERT의 시간복잡도는 O(log2n)
+
 ### 참고
 
 - [영리한 프로그래밍을 위한 알고리즘 강좌](https://www.inflearn.com/course/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%95%EC%A2%8C)
