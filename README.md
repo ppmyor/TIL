@@ -25,6 +25,7 @@
 ## Network
 
 - [1.네트워크란 무엇인가?](https://github.com/ppmyor/TIL/blob/main/Network/1.네트워크란_무엇인가?.md)
+- [2.네트워크 모델](https://github.com/ppmyor/TIL/blob/main/Network/2.네트워크_모델.md)
 
 ## JavaScript
 
