@@ -27,7 +27,7 @@
 - [1.네트워크란 무엇인가?](https://github.com/ppmyor/TIL/blob/main/Network/1.네트워크란_무엇인가?.md)
 - [2.네트워크 모델](https://github.com/ppmyor/TIL/blob/main/Network/2.네트워크_모델.md)
 - [3.LAN 통신](https://github.com/ppmyor/TIL/blob/main/Network/3.LAN_통신.md)
-- [3.WAN 통신](https://github.com/ppmyor/TIL/blob/main/Network/4.WAN_통신.md)
+- [4.WAN 통신](https://github.com/ppmyor/TIL/blob/main/Network/4.WAN_통신.md)
 
 ## JavaScript
 
