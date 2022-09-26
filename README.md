@@ -29,6 +29,7 @@
 - [3.LAN 통신](https://github.com/ppmyor/TIL/blob/main/Network/3.LAN_통신.md)
 - [4.WAN 통신](https://github.com/ppmyor/TIL/blob/main/Network/4.WAN_통신.md)
 - [5.ARP 프로토콜](https://github.com/ppmyor/TIL/blob/main/Network/5.ARP프로토콜.md)
+- [6.멀리 있는 컴퓨터끼리는 이렇게 데이터를 주고받는다](https://github.com/ppmyor/TIL/blob/main/Network/6.멀리_있는_컴퓨터끼리는_이렇게_데이터를_주고받는다.md)
 
 ## JavaScript
 
